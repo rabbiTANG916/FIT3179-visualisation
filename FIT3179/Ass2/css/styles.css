@@ -1,0 +1,83 @@
+#covid19_map {
+	top: auto;
+    bottom: 20px;
+    left: auto;
+    /* right: 100px; */
+	/*height: 1000px;
+	width: 800px;*/
+}
+
+#FIT{
+	text-align: center;
+}
+
+#Visualisation{
+	text-align: center;
+	/* width: 1800px; */
+    margin-right: 20px;
+    height: 50px;
+
+}
+.title{
+	text-align: center;
+}
+
+
+.intro{
+	/* width: 1800px; */
+    margin-right: 20px;
+    height: 50px;
+	text-align: center;
+}
+
+.pure-u-2-3{
+	text-align: center;
+}
+.pure-map-text{
+	text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    top: 50%;
+}
+
+.pure-g{
+	text-align: center;
+}
+
+.left{
+	float: left;
+	width: 900px;
+	margin-top: 40px;
+}
+
+.right{
+	margin-left: 910px;
+	/* margin-top: 500px; */
+}
+
+.final_word{
+	font-family: Georgia;
+}
+
+
+
+/* pie chart grid */
+#pie_title{
+	text-align: center;
+}
+
+#covid19_aus_pie{
+	top: auto;
+    bottom: 20px;
+    left: auto;
+	margin-top: 30px;
+}
+
+#covid19_bubble{
+	margin-left: 110px;
+}
+
+#covid19_multiline{
+	text-align: center;
+	margin-left: 500px;
+}

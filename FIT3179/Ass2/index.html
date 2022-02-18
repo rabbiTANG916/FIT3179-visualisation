@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>COVID-19 Worldwide Visualisation</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+    integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div class="ass2">
+    <h1 id="FIT">FIT3179 Assignment 2</h1>
+    <h2 id="Visualisation">COVID-19 Visualisation</h2>
+    <div class="intro">
+      <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">The covid-19 has always been a popular topic of concern, as the number of cases and
+        deaths continued to rise, people are beginning to pay attention to this human-to-human
+        transmission. Therefore, the action is to discover and present for the people who care
+        about the global COVID-19 situation and the transmission rate trends.</p>
+    </div>
+
+
+    <div class="pure-g">
+      <div class="pure-u-2-3" style="width:100%">
+        <h3>Worldwide COVID-19 Situation Visualisation</h3>`
+        <div id="covid19_map"></div>
+      </div>
+    </div>
+
+    <div class="pure-map-text">
+      <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">This is the map which display the Worldwide Situation of total cases of COVID-19. The color luminance
+        represents
+        the severity of infection in a country’s population.</p>
+        <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">You can place your mouse over a particular area to see the number of total cases in that area.</p>
+    </div>
+    <br>
+    <br>
+
+    <div class="bubble_chart">
+      <div class="left">
+        <h3 style="text-align: center;">COVID-19 bubble chart</h3>
+        <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">This bubble chart shows the relationshiop among deaths cases,confirmed cases and
+          population. You can click on the legend to chooe the continent that you want to see or use the selection bar
+          at the bottom of the chart to filter the chart directly.</p>
+        <div id="covid19_bubble"></div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="wrap">
+      <div class="leftchart">
+        <h3 style="text-align: center;margin-top: 0px;">COVID-19 Death Cases Top 10 Country</h3>
+        <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">The bar chart sorted the countries and colour luminance by difference of death
+          cases number with a mean death number line to give a clearly data overview. You can place your mouse over the
+          bar chart to see the specific number of cases.</p>
+        <div id="covid19_bar" style="margin-left: 100px;"></div>
+      </div>
+      <div class="rightchart">
+        <br>
+        <br>
+        <br>
+        <h3 style="text-align: center;">COVID-19 line trends Visualisation </h3>
+        <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">This visualisation combines the four attributes to represent different trends of
+          COVID-19. The multi-view line chart presents the different of trends and numbers regards four attributes from
+          the dataset in one visualisation so that the reader can realise how the number of deaths related to the active
+          cases, confirmed cases and recovered cases. This chart used a white stroke for different colour lines to avoid
+          layer's effect.</p>
+        <div id="covid19_multiline"></div>
+      </div>
+    </div>
+
+
+    <div class="pure-g">
+      <div class="pure-u-2-3" style="width:100%">
+        <h3 id="pie_title">COVID-19 in Australia</h3>
+        <div id="covid19_aus_pie"></div>
+        <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">The hconcat usage to show three different attributes, and the highlight click is used to discover
+          the number difference of three attributes for one region. Through the pie chart, you can discover the number
+          distribution regards three attributes in different Australia regions.</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="pure-g">
+    <div class="pure-u-1-1 final_word">
+      <p style="font-style: italic; font-family: 'Times New Roman', Times, serif;">The visualisation is created by <a href="https://github.com/rabbiTANG916/Ass2" target="_blank">Wei Tang</a>.
+        The datasource is <a href="https://www.kaggle.com/imdevskp/corona-virus-report" target=" _blank">from Kaggle
+          </href>
+          .</p>
+    </div>
+  </div>
+  <!-- end page -->
+
+
+
+
+
+
+  <script type="text/javascript">
+    var spec2 = "js/total_cases_map.vg.json";
+    vegaEmbed('#covid19_map', spec2).then(function (result) {
+      // Avccess the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+
+    var spec3 = "js/active_cases_bubble.vg.json";
+    vegaEmbed('#covid19_bubble', spec3).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var spec4 = "js/death_cases_line.vg.json";
+    vegaEmbed('#covid19_multiline', spec4).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var spec5 = "js/top_death_case_bar.vg.json";
+    vegaEmbed('#covid19_bar', spec5).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var spec6 = "js/aus_pie.vg.json";
+    vegaEmbed('#covid19_aus_pie', spec6).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+</body>
+
+</html>

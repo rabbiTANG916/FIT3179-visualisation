@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/rabbiTANG916/Ass2/master/dataset/day_wise.csv"
+  },
+  "width": 400,
+  "height": 400,
+  "transform": [
+    {"calculate": "parseInt(datum.Confirmed)", "as": "Confirmed"},
+    {"calculate": "parseInt(datum.Active)", "as": "Active"},
+    {"calculate": "parseInt(datum.Deaths)", "as": "Deaths"},
+    {"calculate": "parseInt(datum.Recovered)", "as": "Recovered"},
+    {"calculate": "parseInt(datum.NewCases)", "as": "NewCases"},
+    {"calculate": "timeParse(datum['Date'], '%d/%m/%Y')", "as": "date1"}
+  ],
+  "repeat": {
+    "layer": ["Confirmed", "Active", "Deaths", "Recovered", "NewCases"]
+  },
+  "spec": {
+    "layer": [
+      {
+        "mark": {"type": "line", "stroke": "white", "strokeWidth": 4},
+        "encoding": {
+          "x": {"field": "date1", "type": "temporal"},
+          "y": {
+            "aggregate": "mean",
+            "field": {"repeat": "layer"},
+            "type": "quantitative",
+            "title": "Number Count"
+          },
+          "tooltip": [
+            {
+              "field": "No_of_countries",
+              "type": "quantitative",
+              "title": "Include Country: "
+            }
+          ]
+        }
+      },
+      {
+        "mark": {"type": "line"},
+        "encoding": {
+          "x": {"field": "date1", "type": "temporal"},
+          "y": {
+            "field": {"repeat": "layer"},
+            "type": "quantitative",
+            "title": "Number Count"
+          },
+          "stroke": {"datum": {"repeat": "layer"}, "type": "nominal"}
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,155 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/rabbiTANG916/Ass2/master/dataset/aus_data.csv"
+    },
+    "hconcat": [
+      {
+        "title": "Recovered cases in Auastralia",
+        "width": 300,
+        "height": 200,
+        "mark": "arc",
+        "transform": [
+          {"calculate": "parseInt(datum.Deaths)", "as": "Deaths"},
+          {"calculate": "parseInt(datum.Confirmed)", "as": "Confirmed"},
+          {"calculate": "parseInt(datum.Recovered)", "as": "Recovered"}
+        ],
+        "encoding": {
+          "theta": {"field": "Recovered", "type": "quantitative", "stack": true},
+          "color": {"field": "Province", "type": "nominal"}
+        },
+        "layer": [
+          {
+            "mark": {"type": "arc", "outerRadius": 80},
+            "selection": {
+              "continent_highlight": {
+                "type": "multi",
+                "fields": ["Recovered"]
+              }
+            },
+            "encoding": {
+              "opacity": {
+                "condition": {"selection": "continent_highlight", "value": 0.7},
+                "value": 0.12
+              },
+              "tooltip": [
+                {
+                  "field": "Province",
+                  "type": "nominal",
+                  "title": "Province Name: "
+                },
+                {
+                  "field": "Recovered",
+                  "type": "quantitative",
+                  "format": ",",
+                  "title": "Recovered Num: "
+                }
+              ]
+            }
+          },
+          {
+            "mark": {"type": "text", "radius": 90},
+            "encoding": {"text": {"field": "Recovered", "type": "quantitative"}}
+          }
+        ]
+      },
+      {
+        "title": "Confirmed cases in Australia",
+        "width": 300,
+        "height": 200,
+        "mark": "arc",
+        "transform": [
+          {"calculate": "parseInt(datum.Deaths)", "as": "Deaths"},
+          {"calculate": "parseInt(datum.Confirmed)", "as": "Confirmed"},
+          {"calculate": "parseInt(datum.Recovered)", "as": "Recovered"}
+        ],
+        "encoding": {
+          "theta": {"field": "Confirmed", "type": "quantitative", "stack": true},
+          "color": {"field": "Province", "type": "nominal"}
+        },
+        "layer": [
+          {
+            "mark": {"type": "arc", "outerRadius": 80},
+            "selection": {
+              "continent_highlight": {
+                "type": "multi",
+                "fields": ["Confirmed"]
+              }
+            },
+            "encoding": {
+              "opacity": {
+                "condition": {"selection": "continent_highlight", "value": 0.7},
+                "value": 0.12
+              },
+              "tooltip": [
+                {
+                  "field": "Province",
+                  "type": "nominal",
+                  "title": "Province Name: "
+                },
+                {
+                  "field": "Confirmed",
+                  "type": "quantitative",
+                  "format": ",",
+                  "title": "Confirmed Num: "
+                }
+              ]
+            }
+          },
+          {
+            "mark": {"type": "text", "radius": 90},
+            "encoding": {"text": {"field": "Confirmed", "type": "quantitative"}}
+          }
+        ]
+      },
+      {
+        "title": "Deaths cases in Australia",
+        "width": 300,
+        "height": 200,
+        "mark": "arc",
+        "transform": [
+          {"calculate": "parseInt(datum.Deaths)", "as": "Deaths"},
+          {"calculate": "parseInt(datum.Confirmed)", "as": "Confirmed"},
+          {"calculate": "parseInt(datum.Recovered)", "as": "Recovered"}
+        ],
+        "encoding": {
+          "theta": {"field": "Deaths", "type": "quantitative", "stack": true},
+          "color": {"field": "Province", "type": "nominal"}
+        },
+        "layer": [
+          {
+            "mark": {"type": "arc", "outerRadius": 80},
+            "selection": {
+              "continent_highlight": {
+                "type": "multi",
+                "fields": ["Deaths"]
+              }
+            },
+            "encoding": {
+              "opacity": {
+                "condition": {"selection": "continent_highlight", "value": 0.7},
+                "value": 0.12
+              },
+              "tooltip": [
+                {
+                  "field": "Province",
+                  "type": "nominal",
+                  "title": "Province Name: "
+                },
+                {
+                  "field": "Deaths",
+                  "type": "quantitative",
+                  "format": ",",
+                  "title": "Deaths Num: "
+                }
+              ]
+            }
+          },
+          {
+            "mark": {"type": "text", "radius": 90},
+            "encoding": {"text": {"field": "Deaths", "type": "quantitative"}}
+          }
+        ]
+      }
+    ]
+  }
